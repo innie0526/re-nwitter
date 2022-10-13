@@ -1,15 +1,17 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
+import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDIrDfwN9kI1LJMjaLDtwAKdAX4doT6UwY',
-  authDomain: 'nwitter-7ce05.firebaseapp.com',
-  projectId: 'nwitter-7ce05',
-  storageBucket: 'nwitter-7ce05.appspot.com',
-  messagingSenderId: '256377779482',
-  appId: '1:256377779482:web:b7271c1c5744eb7ea5a8a3',
+  apiKey: 'AIzaSyCriC9-7UBmYZdz_EY_m4xmAhb0eqyWm7w',
+  authDomain: 're-nwitter.firebaseapp.com',
+  projectId: 're-nwitter',
+  storageBucket: 're-nwitter.appspot.com',
+  messagingSenderId: '61746744850',
+  appId: '1:61746744850:web:d31cad65dd9f20486412cb',
+  measurementId: 'G-F26HT952VR',
 };
 
 // Initialize Firebase
@@ -17,4 +19,6 @@ initializeApp(firebaseConfig);
 
 export const firebaseInstance = firebase;
 export const authService = getAuth();
-export const auth = initializeApp(firebaseConfig);
+export const dbService = getFirestore();
+
+export default firebaseConfig;

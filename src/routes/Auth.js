@@ -14,10 +14,10 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState('');
-  const onChange = (event) => {
+  const onChange = (e) => {
     const {
       target: { name, value },
-    } = event;
+    } = e;
     if (name === 'email') {
       setEmail(value);
     } else if (name === 'password') {
