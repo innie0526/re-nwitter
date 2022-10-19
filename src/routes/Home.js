@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { dbService, storageService } from '../fBase';
+import { dbService } from '../fBase';
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore';
 import Nweet from '../components/Nweet';
-import { v4 as uuid } from 'uuid';
+import NweetFactory from '../components/NweetFactory';
 
 // userObj : app.js -> router.js -> home.js
 const Home = ({ userObj }) => {
-  const [nweet, setNweet] = useState(''); //form을 위한 state
   const [nweets, setNweets] = useState([]); //기본값이 비어있는 배열로 설정
-  const [attachment, setAttachment] = useState();
 
   // useEffect 속 내용의 old ver. 새로 생성/변경 된 데이터는 새로고침해야 반영된다. -----------------
   // const getNweets = async () => {
@@ -27,81 +25,27 @@ const Home = ({ userObj }) => {
 
   // 생성/변경 시 realtime으로 변경 됨 ------------------------------------------------------------
   useEffect(() => {
-    //component 가 amount되면 useEffect 사용
+    // 쿼리문을 변수로 담았고 파이어스토어에 컬렉션에라는 곳에서 "nweets"라는 테이블을
+    // select * from nweets 처럼 테이블 안에 있는 내용을 작성일자가 최근을 위로 올려달라고 요청
     const q = query(
       collection(dbService, 'nweets'),
       orderBy('createdAt', 'desc'),
     );
-    // onSnapshot -> database에 무슨일이 생기면 바로 알림이 오는 realtime 기능
-    onSnapshot(
-      q,
-      (snapshot) => {
-        const nweetArr = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        // console.log(snapshot.getDocs); //something happened 는 CRUD를 return 함
-        // console.log(nweetArray);
-        setNweets(nweetArr);
-      },
-      [],
-    );
-  });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    storageService.ref().child(`${userObj.uid}/}`);
+    // 실시간으로 반영하기위해 스냅샷 기능을 사용
+    onSnapshot(q, (snapshot) => {
+      // 해당 쿼리로 요청해서 받은 값들을 map으로 원하는 목록만 재배열하여 변수에 담음
+      const nweetArr = snapshot.docs.map((doc) => ({
+        id: doc.id, // 데이터 베이스 아이디라고 생각하면 됨
+        ...doc.data(), // 컬렉션 테이블 정보 및 값들 이라고 생각하면 됨
+      }));
+      setNweets(nweetArr); // 배열 변수에 정보 넣기
+    });
+  }, []);
 
-    // await addDoc(collection(dbService, 'nweets'), {
-    //   text: nweet,
-    //   createdAt: Date.now(),
-    //   creatorId: userObj.uid,
-    // });
-    // setNweet('');
-  };
-  const onChange = ({ target: { value } }) => {
-    // event 안에 있는 target 안에 있는 value를 달라고 하는 것임
-    setNweet(value);
-  };
-  const onFileChange = (e) => {
-    const {
-      target: { files },
-    } = e;
-    const theFile = files[0]; // 한 개의 파일만 받음
-    const reader = new FileReader();
-    reader.onloadend = (finishedEvent) => {
-      const {
-        currentTarget: { result },
-      } = finishedEvent;
-      setAttachment(result);
-    };
-    reader.readAsDataURL(theFile);
-  };
-
-  const onClearAttachment = () => {
-    setAttachment(null);
-  };
-  // console.log(nweets);
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          value={nweet}
-          onChange={onChange}
-          type="text"
-          placeholder="What's on your mind?"
-          maxLength={120}
-        />
-
-        <input type="file" accept="image/*" onChange={onFileChange} />
-        <input type="submit" value="Nweet" />
-        {attachment && (
-          <div>
-            <img src={attachment} width="150px" height="150px" />
-            <button onClick={onClearAttachment}>Clear upload</button>
-          </div>
-        )}
-      </form>
+      <NweetFactory userObj={userObj} />
       <div>
         {nweets.map((nweet) => (
           <Nweet // 자체 컴포넌트

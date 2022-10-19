@@ -5,16 +5,28 @@ import Auth from '../routes/Auth';
 import Home from '../routes/Home';
 import Navigation from './Navigation';
 
-// App.js 에 의해서 같은 userObj.prop을 받음
-const AppRouter = ({ isLoggedIn, userObj }) => {
+// App.js 에 의해서 같은 userObj를 prop로 받음 / Navigation, Home, Profile에 적용됨
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && <Navigation userObj={userObj} />}
       <Routes>
         {isLoggedIn ? (
-          <>
+          <
+            // style={{
+            //   maxWidth: 890,
+            //   width: '100%',
+            //   margin: '0 auto',
+            //   marginTop: 80,
+            //   display: 'flex',
+            //   justifyContent: 'center',
+            // }}
+          >
             <Route path="/" element={<Home userObj={userObj} />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<Profile userObj={userObj} refreshUser={refreshUser} />}
+            />
           </>
         ) : (
           <>
