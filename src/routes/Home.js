@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { dbService } from '../fBase';
-import { collection, orderBy, onSnapshot, query } from 'firebase/firestore';
-import Nweet from '../components/Nweet';
-import NweetFactory from '../components/NweetFactory';
+import React, { useEffect, useState } from "react";
+import { dbService } from "fBase";
+import { collection, orderBy, onSnapshot, query } from "firebase/firestore";
+import Nweet from "components/Nweet";
+import NweetFactory from "components/NweetFactory";
 
 // userObj : app.js -> router.js -> home.js
 const Home = ({ userObj }) => {
@@ -28,8 +28,8 @@ const Home = ({ userObj }) => {
     // 쿼리문을 변수로 담았고 파이어스토어에 컬렉션에라는 곳에서 "nweets"라는 테이블을
     // select * from nweets 처럼 테이블 안에 있는 내용을 작성일자가 최근을 위로 올려달라고 요청
     const q = query(
-      collection(dbService, 'nweets'),
-      orderBy('createdAt', 'desc'),
+      collection(dbService, "nweets"),
+      orderBy("createdAt", "desc"),
     );
 
     // 실시간으로 반영하기위해 스냅샷 기능을 사용

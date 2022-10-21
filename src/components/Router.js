@@ -1,9 +1,9 @@
-import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Profile from '../routes/Profile';
-import Auth from '../routes/Auth';
-import Home from '../routes/Home';
-import Navigation from './Navigation';
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "routes/Profile";
+import Auth from "routes/Auth";
+import Home from "routes/Home";
+import Navigation from "./Navigation";
 
 // App.js 에 의해서 같은 userObj를 prop로 받음 / Navigation, Home, Profile에 적용됨
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
@@ -15,11 +15,11 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           <
             // style={{
             //   maxWidth: 890,
-            //   width: '100%',
-            //   margin: '0 auto',
+            //   width: "100%",
+            //   margin: "0 auto",
             //   marginTop: 80,
-            //   display: 'flex',
-            //   justifyContent: 'center',
+            //   display: "flex",
+            //   justifyContent: "center",
             // }}
           >
             <Route path="/" element={<Home userObj={userObj} />} />

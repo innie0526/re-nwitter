@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-} from 'firebase/auth';
+} from "firebase/auth";
+
+// const inputStyles = {};
 
 const AuthForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const onChange = (e) => {
     const {
       target: { name, value },
     } = e;
-    if (name === 'email') {
+    if (name === "email") {
       setEmail(value);
-    } else if (name === 'password') {
+    } else if (name === "password") {
       setPassword(value);
     }
   };
@@ -46,13 +48,14 @@ const AuthForm = () => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="container">
         <input
           name="email"
           type="email"
           placeholder="Email"
           value={email}
           onChange={onChange}
+          className="authInput"
           required
         />
         <input
@@ -61,13 +64,18 @@ const AuthForm = () => {
           placeholder="Password"
           value={password}
           onChange={onChange}
+          className="authInput"
           required
         />
-        <input type="submit" value={newAccount ? 'Create Account' : 'Log in'} />
-        {error}
+        <input
+          type="submit"
+          className="authInput authSubmit"
+          value={newAccount ? "Create Account" : "Log in"}
+        />
+        {error && <span className="authError">{error}</span>}
       </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? 'Sign in' : 'Create Account'}
+      <span onClick={toggleAccount} className="authSwitch">
+        {newAccount ? "Sign in" : "Create Account"}
       </span>
     </>
   );

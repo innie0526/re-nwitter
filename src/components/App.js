@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import AppRouter from './Router';
-import { authService } from '../fBase';
+import React, { useEffect, useState } from "react";
+import AppRouter from "./Router";
+import { authService } from "fBase";
 import {
   getAuth,
   onAuthStateChanged,
   updateCurrentUser,
   updateProfile,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 const App = () => {
   const [init, setInit] = useState(false);
@@ -22,7 +22,7 @@ const App = () => {
         setUserObj({
           displayName: authService.currentUser.displayName
             ? authService.currentUser.displayName
-            : '이름을 설정해주세요.', // 이름값이 null일 때 이름을 'Anonymous'로 설정
+            : "이름을 설정해주세요.", // 이름값이 null일 때 이름을 'Anonymous'로 설정
           uid: user.uid,
           updateProfile: (args) =>
             updateProfile(user, { displayName: user.displayName }),
@@ -52,7 +52,7 @@ const App = () => {
           userObj={userObj}
         /> // 수정 전 isLoggedIn={isLoggedIn}
       ) : (
-        'Initializing...'
+        "Initializing..."
       )}
       <footer> &copy;{new Date().getFullYear()} Nwitter</footer>
     </>
