@@ -59,16 +59,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
       }}
     >
       {editing ? (
-        <div
-          style={{
-            maxWidth: 890,
-            width: "100%",
-            margin: "0 auto",
-            marginTop: 80,
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div>
           <form onSubmit={onSubmit} className="container nweetEdit">
             <input
               type="text"
@@ -89,7 +80,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
         <>
           <h4>{nweetObj.text}</h4>
           {nweetObj.attachmentUrl && (
-            <img src={nweetObj.attachmentUrl} width="150px" height="150px" />
+            <img src={nweetObj.attachmentUrl} />
           )}
           {isOwner && (
             <div class="nweet__actions">

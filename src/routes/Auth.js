@@ -28,6 +28,7 @@ const Auth = () => {
     console.log(data);
   };
 
+
   return (
     <div className="authContainer">
       <FontAwesomeIcon
@@ -36,13 +37,14 @@ const Auth = () => {
         size="3x"
         style={{ marginBottom: 30 }}
       />
+
       <div>
         <AuthForm />
         <button name="google" onClick={onSocialClick} className="authBtn">
-          Continue with Google <FontAwesomeIcon icon={faGoogle} />
+           Google 계정으로 로그인하기 <FontAwesomeIcon icon={faGoogle} />
         </button>
         <button name="github" onClick={onSocialClick} className="authBtn">
-          Continue with Github <FontAwesomeIcon icon={faGithub} />
+           Github 계정으로 로그인하기 <FontAwesomeIcon icon={faGithub} />
         </button>
       </div>
     </div>

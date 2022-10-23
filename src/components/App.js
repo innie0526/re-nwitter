@@ -30,9 +30,6 @@ const App = () => {
       } else {
         setUserObj(null);
       }
-      // else {
-      //   setIsLoggedIn(false);
-      // }
       setInit(true);
     });
   }, []);
@@ -54,7 +51,11 @@ const App = () => {
       ) : (
         "Initializing..."
       )}
-      <footer> &copy;{new Date().getFullYear()} Nwitter</footer>
+      <footer className="footer">
+        <div>
+           &copy;{new Date().getFullYear()} Nwitter
+          </div>
+           </footer>
     </>
   );
 };

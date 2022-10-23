@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import HorizonLine from "./horizonLine";
 
 // const inputStyles = {};
 
@@ -47,7 +48,11 @@ const AuthForm = () => {
   };
 
   return (
-    <>
+    <div>
+      <div className="authText">
+        <span onClick={toggleAccount}> 
+        {newAccount ? "오늘 트위터에 가입하세요." : "트위터에 로그인하기"}</span>
+      </div>
       <form onSubmit={onSubmit} className="container">
         <input
           name="email"
@@ -75,9 +80,10 @@ const AuthForm = () => {
         {error && <span className="authError">{error}</span>}
       </form>
       <span onClick={toggleAccount} className="authSwitch">
-        {newAccount ? "Sign in" : "Create Account"}
+        {newAccount ? "Sign in" : "계정이 없으신가요? Create Account"}
       </span>
-    </>
+      <HorizonLine text="또는"/>
+    </div>
   );
 };
 

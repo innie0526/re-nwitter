@@ -8,19 +8,6 @@ import NweetFactory from "components/NweetFactory";
 const Home = ({ userObj }) => {
   const [nweets, setNweets] = useState([]); //기본값이 비어있는 배열로 설정
 
-  // useEffect 속 내용의 old ver. 새로 생성/변경 된 데이터는 새로고침해야 반영된다. -----------------
-  // const getNweets = async () => {
-  //   const dbNweets = await getDocs(collection(dbService, 'nweets'));
-  //   dbNweets.forEach((document) => {
-  //     // Nweet의 객체 = nweetObject
-  //     const nweetObject = {
-  //       ...document.data(), // ...은 data의 내용물
-  //       id: document.id,
-  //     };
-  //     setNweets((prev) => [nweetObject, ...prev]); // => is implicit return. 즉, 배열을 리턴함. document.data()(-> nweetObject로 바꿔줌) 는 가장 최근 data , ...prev 는 이전 document
-  //     console.log(document.data()); // state(firebase)에 담긴 각각의 document.data() 내용을 콘솔에 출력
-  //   });
-  // };
   // --------------------------------------------------------------------------------------------
 
   // 생성/변경 시 realtime으로 변경 됨 ------------------------------------------------------------

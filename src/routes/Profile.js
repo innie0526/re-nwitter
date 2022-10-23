@@ -55,7 +55,16 @@ const Profile = ({ refreshUser, userObj }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container"
+    style={{
+      maxWidth: 320,
+      width: "50%",
+      margin: "0 auto",
+      marginTop: 80,
+      // display: "flex",
+      justifyContent: "center",
+    }}
+    >
       <form onSubmit={onSubmit} className="profileForm">
         <input
           type="text"
@@ -63,6 +72,7 @@ const Profile = ({ refreshUser, userObj }) => {
           onChange={onChange}
           placeholder="Display name"
           value={newDisplayName}
+          className="formInput"
         />
         <input
           type="submit"
@@ -73,7 +83,10 @@ const Profile = ({ refreshUser, userObj }) => {
           }}
         />
       </form>
-      <span className="formBtm cancelBtn logOut" onClick={onLogOutClick}>
+      <span
+       className="formBtm cancelBtn logOut"
+        onClick={onLogOutClick}
+        >
         Log Out
       </span>
     </div>
