@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'; //사용자 인증용
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth"; //사용자 인증용
 import { getFirestore } from 'firebase/firestore'; //트윗용 database
 // Cloud Firestore의 databse는 NoSQL기반 database. 유연하고 사용하기 쉬움. 적은 규칙. 상대적으로 낮은 자유도
 //  다른 형태의 database로는 SQL database가 있음. 많은 규칙과 많은 관습이 존재. 높은 자유도

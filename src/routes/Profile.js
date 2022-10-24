@@ -14,26 +14,6 @@ const Profile = ({ refreshUser, userObj }) => {
     navigate("/");
   };
 
-  // 내 nweets 얻는 function 생성
-  // const getMyNweets = async () => {
-  //   // 어떤 user 가 이 화면을 보고 있는 지 알 수 있게 됨 = 어떤 user의 Nweets를 불러와야 하는지 알게 됨
-  //   const q = query(
-  //     collection(dbService, "nweets"),
-  //     where("creatorId", "==", userObj.uid), //where() 은 어떻게 filtering 하는지 알려줌
-  //     orderBy("createdAt", "desc"),
-  //   );
-
-  //   const querySnapshot = await getDocs(q);
-  //   querySnapshot.forEach((doc) => {
-  //     console.log(doc.id, "=>", doc.data());
-  //   });
-  // };
-
-  // 내 nweets 얻는 function 호출
-  // useEffect(() => {
-  //   getMyNweets();
-  // }, []);
-
   const onChange = (e) => {
     const {
       target: { value },
@@ -55,15 +35,16 @@ const Profile = ({ refreshUser, userObj }) => {
   };
 
   return (
-    <div className="container"
-    style={{
-      maxWidth: 320,
-      width: "50%",
-      margin: "0 auto",
-      marginTop: 80,
-      // display: "flex",
-      justifyContent: "center",
-    }}
+    <div
+      className="container"
+      style={{
+        maxWidth: 320,
+        width: "50%",
+        margin: "0 auto",
+        marginTop: 80,
+        // display: "flex",
+        justifyContent: "center",
+      }}
     >
       <form onSubmit={onSubmit} className="profileForm">
         <input
@@ -83,10 +64,7 @@ const Profile = ({ refreshUser, userObj }) => {
           }}
         />
       </form>
-      <span
-       className="formBtm cancelBtn logOut"
-        onClick={onLogOutClick}
-        >
+      <span className="formBtm cancelBtn logOut" onClick={onLogOutClick}>
         Log Out
       </span>
     </div>
