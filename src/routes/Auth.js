@@ -28,7 +28,6 @@ const Auth = () => {
     console.log(data);
   };
 
-
   return (
     <div className="authContainer">
       <FontAwesomeIcon
@@ -41,11 +40,14 @@ const Auth = () => {
       <div>
         <AuthForm />
         <button name="google" onClick={onSocialClick} className="authBtn">
-           Google 계정으로 로그인하기 <FontAwesomeIcon icon={faGoogle} />
+          Google 계정으로 로그인하기 <FontAwesomeIcon icon={faGoogle} />
         </button>
         <button name="github" onClick={onSocialClick} className="authBtn">
-           Github 계정으로 로그인하기 <FontAwesomeIcon icon={faGithub} />
+          Github 계정으로 로그인하기 <FontAwesomeIcon icon={faGithub} />
         </button>
+        {/* react에서 onClick 이벤트 
+           클릭 이벤트는 하나의 엘리먼트가 클릭이 되어있을 때 발동되며 onClick으로 정의됨
+            이는 유저의 액션에 대해 작용하고 싶은 엘리먼트의 attribute로 정의됨*/}
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ form {
 .formInput {
   width: 100%;
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid #04aaff;
   text-align: center;
   background-color: white;
@@ -60,6 +60,7 @@ form {
   cursor: pointer;
   width: 100%;
   padding: 7px 30px;
+  margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
   color: white;
@@ -68,11 +69,29 @@ form {
   cursor: pointer;
 }
 
+.updateBtn {
+  /* padding: 7px; */
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  width: 100%;
+  background-color: #04aaff;
+  border: solid 1px #04aaff;
+  cursor: pointer;
+}
+
+.editCancel {
+  background-color: rgb(247, 54, 20);
+  border: solid 1px rgb(247, 54, 20);
+  cursor: pointer;
+  margin: 20px 0px;
+}
+
 .cancelBtn {
   cursor: pointer;
-  width: 100%;
+  padding: 7px;
   background-color: rgb(247, 54, 20);
-  padding: 7px 30px;
+  width: 100%;
   text-align: center;
   color: white;
   border-radius: 20px;
@@ -91,7 +110,7 @@ form {
 }
 
 .logOut {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 /* Nwitter Factory */
@@ -176,6 +195,28 @@ form {
   font-size: 12px;
 }
 
+.factoryForm .NweetBtn {
+  cursor: pointer;
+  border: solid 1px #04aaff;
+  background-color: #04abff00;
+  color: #04aaff;
+  margin-top: 10px;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+.factoryForm .NweetBtn :hover {
+  color: rgba(0, 153, 255, 0.473);
+}
+
+.factoryForm .myNweetBtn {
+  cursor: pointer;
+  border: solid 1px #04aaff;
+  background-color: #04abff00;
+  color: #04aaff;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
 /* Nweet */
 
 .nweetEdit .formBtn {
@@ -191,7 +232,7 @@ form {
   background-color: white;
   width: 100%;
   max-width: 320px;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   border: solid 1px rgb(4, 170, 255);
   position: relative;

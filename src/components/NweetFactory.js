@@ -5,7 +5,7 @@ import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
-import MyNweets from "./MyNweets";
+// import MyNweets from "./MyNweets";
 
 const NweetFactory = ({ userObj }) => {
   const [nweet, setNweet] = useState(""); //form을 위한 state
@@ -95,8 +95,10 @@ const NweetFactory = ({ userObj }) => {
           opacity: 0,
         }}
       />
-      <input type="submit" value="Nweet" />
-      <MyNweets />
+      <input className="NweetBtn" type="submit" value="Nweet" />
+
+      <button className="myNweetBtn">내가 쓴 Nweet 보기</button>
+
       {attachment && (
         <div className="factoryForm__attachment">
           <img

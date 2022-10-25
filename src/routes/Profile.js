@@ -34,6 +34,11 @@ const Profile = ({ refreshUser, userObj }) => {
     }
   };
 
+  // // ------내가 작성한 Nweets들만 보기
+  // const MyNweets = () => {
+
+  // }
+
   return (
     <div
       className="container"
