@@ -83,7 +83,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
         </div>
       ) : (
         <>
-          <h4>{nweetObj.text}</h4>
+          <h5 className="formText">작성자 :{nweetObj.author} </h5>
+          <h5 className="formText">작성일자 :{nweetObj.createdAt} </h5>
+          <h4>{nweetObj.text} </h4>
           {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
           {isOwner && (
             <div class="nweet__actions">

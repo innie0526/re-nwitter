@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { dbService, storageService } from "fBase";
+import { authService, dbService, storageService } from "fBase";
 import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +35,7 @@ const NweetFactory = ({ userObj }) => {
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
+      author: authService.currentUser.displayName,
       attachmentUrl, // 새로 트윗할 때 firebase storage에 이것도 같이 올라감
     };
 

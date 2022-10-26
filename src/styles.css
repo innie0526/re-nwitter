@@ -56,6 +56,11 @@ form {
   background-color: white;
   color: black;
 }
+.formText {
+  color: #04aaff;
+  font-size: 0.5rem;
+  margin-bottom: 10px;
+}
 
 .formBtn {
   cursor: pointer;
@@ -81,7 +86,7 @@ form {
   background-color: #04aaff;
   cursor: pointer;
 }
-.editBtn{
+.editBtn {
   padding: 7px;
   text-align: center;
   color: white;
