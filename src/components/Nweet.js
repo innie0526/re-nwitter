@@ -73,13 +73,13 @@ const Nweet = ({ nweetObj, isOwner }) => {
             <input
               type="submit"
               value="Update Nweet"
-              className="formBtn updateBtn"
+              className="updateBtn"
               // className="updateNweetBtn"
             />
           </form>
-          <span onClick={toggleEditing} className="formBtn editCancel">
+          <div onClick={toggleEditing} className="editBtn">
             Cancel
-          </span>
+          </div>
         </div>
       ) : (
         <>

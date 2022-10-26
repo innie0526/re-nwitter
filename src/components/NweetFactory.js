@@ -96,9 +96,7 @@ const NweetFactory = ({ userObj }) => {
         }}
       />
       <input className="NweetBtn" type="submit" value="Nweet" />
-
-      <button className="myNweetBtn">내가 쓴 Nweet 보기</button>
-
+      {/* <MyNweets/> */}
       {attachment && (
         <div className="factoryForm__attachment">
           <img

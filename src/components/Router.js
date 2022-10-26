@@ -4,6 +4,7 @@ import Profile from "routes/Profile";
 import Auth from "routes/Auth";
 import Home from "routes/Home";
 import Navigation from "./Navigation";
+import MyNweets from "./MyNweets";
 
 // App.js 에 의해서 같은 userObj를 prop로 받음 / Navigation, Home, Profile에 적용됨
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
@@ -18,6 +19,9 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
               path="/profile"
               element={<Profile userObj={userObj} refreshUser={refreshUser} />}
             />
+            {/* <Route
+             path="/myNweets"
+             element={<MyNweets userObj={userObj}/>}/> */}
           </>
         ) : (
           <>

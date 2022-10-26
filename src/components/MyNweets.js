@@ -1,11 +1,16 @@
 import { dbService } from "fBase";
+import { getAuth } from "firebase/auth";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Nweet from "./Nweet";
+// import NweetFactory from "./NweetFactory";
 
-const MyNweets = ({ userObj }) => {
+const MyNweets = ({userObj, nweetObj}) => {
   const [myNweets, setMyNweets] = useState([]);
-
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const uid = user.uid;
+  
   useEffect(() => {
     const q = query(
       collection(dbService, "nweets"),
@@ -23,16 +28,17 @@ const MyNweets = ({ userObj }) => {
 
   return (
     <div>
-      <span>내가 쓴 Nweet 보기</span>
-      {myNweets.map((nweet) => (
-        <Nweet
-          key={nweet.id}
-          nweetObj={nweet}
-          isOwner={nweet.creatorId === userObj.uid} // 수정삭제버튼 나옴
-        />
-      ))}
+<label type="text" className="myNweetBtn">내 트윗들 보기</label>
+{myNweets.map((nweet) => (
+  <Nweet
+    key={nweet.id}
+    nweetObj={nweet}
+    isOwner={nweet.creatorId === userObj.uid} // 수정삭제버튼 나옴
+  />
+))}
     </div>
-  );
+  )
 };
+
 
 export default MyNweets;

@@ -34,10 +34,10 @@ form {
   width: 100%;
 }
 
-/* .nweet-input::placeholder {
+.nweet-input::placeholder {
   color: rgb(6, 0, 0);
   opacity: 0.9;
-} */
+}
 
 .container {
   width: 100%;
@@ -48,7 +48,8 @@ form {
 
 .formInput {
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
   border-radius: 10px;
   border: 1px solid #04aaff;
   text-align: center;
@@ -70,31 +71,37 @@ form {
 }
 
 .updateBtn {
-  /* padding: 7px; */
+  padding: 7px;
   text-align: center;
   color: white;
   border-radius: 20px;
-  width: 100%;
+  width: 20%;
+  margin: auto;
+  margin-bottom: 20px;
   background-color: #04aaff;
-  border: solid 1px #04aaff;
   cursor: pointer;
 }
-
-.editCancel {
+.editBtn{
+  padding: 7px;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  width: 20%;
+  margin: auto;
   background-color: rgb(247, 54, 20);
-  border: solid 1px rgb(247, 54, 20);
   cursor: pointer;
-  margin: 20px 0px;
 }
 
 .cancelBtn {
-  cursor: pointer;
   padding: 7px;
-  background-color: rgb(247, 54, 20);
-  width: 100%;
   text-align: center;
   color: white;
   border-radius: 20px;
+  width: 100%;
+  margin: auto;
+  background-color: rgb(247, 54, 20);
+  cursor: pointer;
 }
 
 /* Profile Page */
@@ -208,12 +215,13 @@ form {
   color: rgba(0, 153, 255, 0.473);
 }
 
-.factoryForm .myNweetBtn {
+.myNweetBtn {
   cursor: pointer;
   border: solid 1px #04aaff;
   background-color: #04abff00;
+  text-align: center;
   color: #04aaff;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 5px 10px;
   border-radius: 20px;
 }
