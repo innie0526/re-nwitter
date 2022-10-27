@@ -19,9 +19,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
               path="/profile"
               element={<Profile userObj={userObj} refreshUser={refreshUser} />}
             />
-            {/* <Route
-             path="/myNweets"
-             element={<MyNweets userObj={userObj}/>}/> */}
+            <Route path="/myNweets" element={<MyNweets userObj={userObj} />} />
           </>
         ) : (
           <>

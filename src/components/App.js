@@ -47,15 +47,13 @@ const App = () => {
           refreshUser={refreshUser}
           isLoggedIn={Boolean(userObj)}
           userObj={userObj}
-        /> // 수정 전 isLoggedIn={isLoggedIn}
+        />
       ) : (
         "Initializing..."
       )}
       <footer className="footer">
-        <div>
-           &copy;{new Date().getFullYear()} Nwitter
-          </div>
-           </footer>
+        <div>&copy;{new Date().getFullYear()} Nwitter</div>
+      </footer>
     </>
   );
 };

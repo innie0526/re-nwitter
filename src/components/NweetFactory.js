@@ -5,16 +5,20 @@ import { ref, uploadString, getDownloadURL } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
-// import MyNweets from "./MyNweets";
+import { useNavigate } from "react-router-dom";
 
 const NweetFactory = ({ userObj }) => {
+  // --------------------- nweets 생성 -------------------------
   const [nweet, setNweet] = useState(""); //form을 위한 state
-  const [attachment, setAttachment] = useState("");
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    let attachmentUrl = "";
+  const [attachment, setAttachment] = useState(""); //트윗할 때 텍스트만 입력 시 이미지 url을 ""로 비워두기
 
-    // 이미지 첨부하지 않고 텍스트만 올리고 싶을 때도 있기 때문에 attachment 가 있을 때만 아래 코드 실행
+  const onSubmit = async (e) => {
+    if (nweet === "") {
+      return;
+    }
+    e.preventDefault();
+    let attachmentUrl = ""; // 사진이 없다면 첨부파일주소는 빈 값. 사진 첨부하면 storage에서 다운받은 URL로 업데이트
+
     // 이미지 첨부하지 않은 경우엔 attachmentUrl == '' 이 된다.
     if (attachment !== "") {
       //파일 경로 참조 만들기
@@ -23,17 +27,60 @@ const NweetFactory = ({ userObj }) => {
       const response = await uploadString(
         attachmentRef,
         attachment,
-        "data_url",
+        "data_url", // data_url은 readAsDataURL에서 한거임
       );
 
       // storage 참조 경로에 있는 파일의 URL을 다운로드해서 attachmentUrl 변수에 넣어서 업데이트
       attachmentUrl = await getDownloadURL(response.ref);
     }
 
+    const todayTime = () => {
+      let now = new Date(); // 현재 날짜 및 시간
+      let todayYear = now.getFullYear();
+      const todayMonth = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      let monthOfYear = todayMonth[now.getMonth() + 1];
+      let todayDate = now.getDate();
+      const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+      let dayOfWeek = week[now.getDay()];
+      let hours = now.getHours();
+      let minutes = String(now.getMinutes()).padStart(2, "0");
+      let seconds = String(now.getSeconds()).padStart(2, "0");
+
+      return (
+        monthOfYear +
+        "  " +
+        todayDate +
+        ", " +
+        todayYear +
+        "  " +
+        dayOfWeek +
+        "  " +
+        hours +
+        " : " +
+        minutes +
+        " : " +
+        seconds
+      );
+    };
+    console.log(todayTime());
     // 트윗 오브젝트
     const nweetObj = {
-      text: nweet,
-      createdAt: Date.now(),
+      text: nweet, //우리의 document의 key
+      timestamp: todayTime(),
       creatorId: userObj.uid,
       author: authService.currentUser.displayName,
       attachmentUrl, // 새로 트윗할 때 firebase storage에 이것도 같이 올라감
@@ -70,6 +117,13 @@ const NweetFactory = ({ userObj }) => {
     setAttachment(null);
   };
 
+  // ---------------내 트윗만 보기----------------
+  const navigate = useNavigate();
+
+  const onMyNweetsClick = () => {
+    navigate("/myNweets");
+  };
+
   return (
     <form onSubmit={onSubmit} className="factoryForm">
       <div className="factoryInput__container">
@@ -97,7 +151,13 @@ const NweetFactory = ({ userObj }) => {
         }}
       />
       <input className="NweetBtn" type="submit" value="Nweet" />
-      {/* <MyNweets/> */}
+
+      <div>
+        <span path="/Mynweets" onClick={onMyNweetsClick} className="NweetBtn">
+          My Nweets
+        </span>
+      </div>
+
       {attachment && (
         <div className="factoryForm__attachment">
           <img
