@@ -56,8 +56,16 @@ form {
 }
 .formText {
   color: #04aaff;
-  font-size: 0.5rem;
-  margin-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.formTodayText {
+  color: #04aaff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .formBtn {
@@ -84,6 +92,10 @@ form {
   background-color: #04aaff;
   cursor: pointer;
 }
+.updateBtn:hover{
+  background-color: black;
+}
+
 .editBtn {
   padding: 7px;
   text-align: center;
@@ -94,6 +106,10 @@ form {
   margin: auto;
   background-color: rgb(247, 54, 20);
   cursor: pointer;
+}
+
+.editBtn:hover {
+  background-color: black;
 }
 
 .cancelBtn {
@@ -182,7 +198,7 @@ form {
 }
 
 .factoryForm__attachment {
-  display: flex;
+  display:flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -213,8 +229,10 @@ form {
   padding: 5px 15px;
   border-radius: 20px;
 }
-.factoryForm .NweetBtn :hover {
-  color: rgba(0, 153, 255, 0.473);
+
+.NweetBtn:hover {
+  color: white;
+background-color: #04aaff;
 }
 
 .myNweetBtn {
@@ -242,7 +260,7 @@ form {
   background-color: white;
   width: 100%;
   max-width: 320px;
-  padding: 30px;
+  padding: 10px;
   border-radius: 10px;
   border: solid 1px rgb(4, 170, 255);
   position: relative;
