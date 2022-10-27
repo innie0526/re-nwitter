@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "fBase";
-import { dbService, storageService } from "fBase";
-import { collection, query, where, orderBy,  onSnapshot, } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import Nweet from "components/Nweet";
-import { getAuth, updateCurrentUSer } from "firebase/auth";
 
-
-
+// -----------------------프로필 화면-------------------------------------------
 // prop으로 userObj를 받음
-const Profile = ({ refreshUser, userObj, nweetObj  }) => {
+const Profile = ({ refreshUser, userObj }) => {
   const navigate = useNavigate();
   const [newDisplayName, setNewDisplayName] = useState(userObj.dispalyName);
-  const [mytweets, setMytweets] = useState([]);
 
   const onLogOutClick = () => {
     authService.signOut();
@@ -39,32 +33,6 @@ const Profile = ({ refreshUser, userObj, nweetObj  }) => {
       setNewDisplayName("");
     }
   };
-
-//  ------------------내 nweet들만 보기
-const auth = getAuth();
-const user = auth.currentUser;
-const uid = user.uid;
-
-useEffect(() => {
-  const q = query(
-    collection(dbService, "nweets"),
-    orderBy("createdAt", "desc"),
-    where("creatorId", "==", userObj.uid)
-  );
-  onSnapshot(
-    q,
-    (snapshot) => {
-      const nweetArray = snapshot.docs.map((document) => ({
-        id: document.id,
-        ...document.data(),
-      }));
-      setMytweets(nweetArray);
-      console.log(nweetArray); // 콘솔에 내 트윗 배열 상태로 보기
-    },
-    []
-  ); // ------------------ 내 트윗 가져오기 끝 ---------------------------------
-}, [userObj.uid]);
-
 
   return (
     <div
@@ -96,25 +64,9 @@ useEffect(() => {
           }}
         />
       </form>
-{/* --------------내트윗보기-------------------------------------------- */}
-<label type="text" className="myNweetBtn">
-        <span>내 트윗 보기</span>
-      </label>
-      <div>
-        {mytweets.map((nweet) => (
-          <Nweet
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid} // 수정삭제버튼 나옴
-          />
-        ))}
-      </div>
-      {/*  */}
-
       <span className="formBtm cancelBtn logOut" onClick={onLogOutClick}>
         Log Out
       </span>
-
     </div>
   );
 };
