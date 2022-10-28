@@ -140,6 +140,21 @@ const NweetFactory = ({ userObj }) => {
       <label for="attach-file" className="factoryInput__label">
         <span>Add photos</span>
         <FontAwesomeIcon icon={faPlus} />
+        {attachment && (
+          <span className="factoryForm factoryForm__attachment">
+            <img
+              src={attachment}
+              alt="preview"
+              style={{
+                backgroundImage: attachment,
+              }}
+            />
+            <div className="factoryForm__clear" onClick={onClearAttachment}>
+              <span>Remove</span>
+              <FontAwesomeIcon icon={faTimes} />
+            </div>
+          </span>
+        )}
       </label>
       <input
         id="attach-file"
@@ -157,22 +172,6 @@ const NweetFactory = ({ userObj }) => {
           My Nweets
         </span>
       </div>
-
-      {attachment && (
-        <div className="factoryForm__attachment">
-          <img
-            src={attachment}
-            alt="preview"
-            style={{
-              backgroundImage: attachment,
-            }}
-          />
-          <div className="factoryForm__clear" onClick={onClearAttachment}>
-            <span>Remove</span>
-            <FontAwesomeIcon icon={faTimes} />
-          </div>
-        </div>
-      )}
     </form>
   );
 };
